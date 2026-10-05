@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: chunking-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vectordb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  ai:
+    # 默认走本地 Ollama：无需任何 API Key 即可跑通全链路
+    # 切云端：mvn spring-boot:run -Dspring-boot.run.profiles=cloud（需配置两个 API Key）
+    model:
+      chat: ollama        # 本地 qwen3:1.7b
+      embedding: ollama   # 本地 bge-m3（输出固定 1024 维，与向量表列宽一致）
+      # openai starter 在 classpath 上时会默认装配语音/图像等全部模态，默认配置下无 API Key，必须显式关闭
+      audio:
+        speech: none
+        transcription: none
+      image: none
+      moderation: none
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: qwen3:1.7b
+      embedding:
+        options:
+          model: bge-m3
+    vectorstore:
+      pgvector:
+        initialize-schema: true   # 启动时建扩展/建表/建索引；生产首部署后建议关掉
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1024          # 必须与 embedding 输出维度一致
+
+# 实验参数：入库文件与文档标识
+demo:
+  file-path: docs/员工考勤与报销制度.txt
+  doc-id: hr-policy-2025       # 稳定的业务标识，文档更新时按它先删后插；别用文件哈希
+  doc-name: 员工考勤与报销制度
+  chunk-size: 512              # 默认档；--experiment 模式会跑 200/500/1000 三档
+
+---
+# 云端模型配置：DeepSeek 对话 + 智谱 embedding-3（均走 OpenAI 兼容协议）
+# 启用：-Dspring-boot.run.profiles=cloud，并先配置 DEEPSEEK_API_KEY / ZHIPUAI_API_KEY
+spring:
+  config:
+    activate:
+      on-profile: cloud
+  ai:
+    model:
+      chat: openai
+      embedding: openai
+    openai:
+      # 顶层配置 = 对话模型（DeepSeek）
+      api-key: ${DEEPSEEK_API_KEY}
+      base-url: https://api.deepseek.com   # 注意：不带 /v1，starter 自动拼 /v1/chat/completions
+      chat:
+        options:
+          model: deepseek-v4-flash   # 日常演示用 flash；复杂推理可换 deepseek-v4-pro
+      # embedding 子配置覆盖顶层 = 智谱 embedding-3（DeepSeek 无官方 embedding API）
+      embedding:
+        api-key: ${ZHIPUAI_API_KEY}
+        base-url: https://open.bigmodel.cn/api/paas   # 智谱 OpenAI 兼容入口
+        embeddings-path: /v4/embeddings   # 智谱路径是 /v4，必须覆盖默认的 /v1/embeddings
+        options:
+          model: embedding-3
+          dimensions: 1024   # 显式声明维度，与向量表列宽一致
