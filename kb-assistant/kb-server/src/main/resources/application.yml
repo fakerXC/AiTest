@@ -1,0 +1,70 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kb-server
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kb
+    username: kb
+    password: kb
+    driver-class-name: org.postgresql.Driver
+  ai:
+    model:
+      chat: openai          # Kimi（OpenAI 兼容协议），环境变量 KIMI_KEY
+      embedding: ollama     # 本地 bge-m3（1024 维，与向量表一致）；Kimi 无 embedding API
+      # openai starter 在 classpath 上时会默认装配全部模态，未配置的模态必须显式关闭
+      audio:
+        speech: none
+        transcription: none
+      image: none
+      moderation: none
+    openai:
+      api-key: ${KIMI_KEY}
+      # Spring AI 2.0 起底层换成官方 openai-java SDK，只补 /chat/completions，
+      # 所以 base-url 必须带 /v1（与 1.x 时代 RestClient 自动拼 /v1 的约定相反）
+      base-url: https://api.moonshot.cn/v1
+      chat:
+        options:
+          model: kimi-k2-0905-preview     # 日常问答；可按需切换 kimi-k2-turbo-preview 等
+    ollama:
+      base-url: http://localhost:11434
+      embedding:
+        options:
+          model: bge-m3
+      chat:
+        options:
+          model: qwen3:1.7b               # local profile 的降级对话模型
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1024
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always     # 自动建 SPRING_AI_CHAT_MEMORY 表
+
+kb:
+  es:
+    url: http://localhost:9200
+    index: kb_chunks
+  rerank:
+    provider: none        # 无 DASHSCOPE_API_KEY 时保持 none（RRF 名次直通）；有 key 改 dashscope
+    top-n: 5              # 精排后保留条数（rerank 是降噪声不是保必中，别取太小）
+  recall-size: 20         # 粗召回每路条数（向量/BM25 各 20，RRF 融合后取 top-n）
+  upload-dir: ../kb-data/uploads
+  chunk-size: 500         # 条款结构切分的单块 token 上限（第 6 章结论：500 左右是平衡点）
+
+---
+# 无 KIMI_KEY 时的纯本地降级：对话也走 Ollama
+# 用法：mvn spring-boot:run -Dspring-boot.run.profiles=local
+spring:
+  config:
+    activate:
+      on-profile: local
+  ai:
+    model:
+      chat: ollama

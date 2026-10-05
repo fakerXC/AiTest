@@ -1,0 +1,32 @@
+{"id": "q001", "question": "公司的核心工作时间是几点到几点？", "goldenAnswer": "核心工作时间为上午十时至下午四时。", "goldenChunkIds": ["hr-policy-2025#c002"], "type": "simple"}
+{"id": "q002", "question": "每月迟到几次会被扣绩效分？扣多少分？", "goldenAnswer": "每月迟到超过三次的，每次扣减当月绩效分 2 分。", "goldenChunkIds": ["hr-policy-2025#c002"], "type": "simple"}
+{"id": "q003", "question": "迟到超过一小时怎么处理？", "goldenAnswer": "迟到超过一小时的，按事假半天处理。", "goldenChunkIds": ["hr-policy-2025#c002"], "type": "simple"}
+{"id": "q004", "question": "员工请假要在哪个系统提交申请？", "goldenAnswer": "请假须提前在 OA 系统提交申请。", "goldenChunkIds": ["hr-policy-2025#c003"], "type": "simple"}
+{"id": "q005", "question": "病假需要提供什么证明？", "goldenAnswer": "病假需提供二级以上医院证明。", "goldenChunkIds": ["hr-policy-2025#c003"], "type": "simple"}
+{"id": "q006", "question": "连续旷工三天会有什么后果？", "goldenAnswer": "连续旷工三天视为严重违反规章制度，公司有权解除劳动合同。", "goldenChunkIds": ["hr-policy-2025#c003"], "type": "simple"}
+{"id": "q007", "question": "出差期间的考勤以什么为准？", "goldenAnswer": "出差期间的考勤以出差审批单为准，不计入迟到统计。", "goldenChunkIds": ["hr-policy-2025#c004"], "type": "simple"}
+{"id": "q008", "question": "因公外出需要在系统里登记什么？", "goldenAnswer": "应提前在 OA 系统登记去向与预计返岗时间。", "goldenChunkIds": ["hr-policy-2025#c004"], "type": "simple"}
+{"id": "q009", "question": "一线城市出差住宿每晚不超过多少钱？", "goldenAnswer": "一线城市每晚不超过 500 元。", "goldenChunkIds": ["hr-policy-2025#c005"], "type": "simple"}
+{"id": "q010", "question": "新一线城市的住宿标准是多少？", "goldenAnswer": "新一线城市每晚不超过 450 元。", "goldenChunkIds": ["hr-policy-2025#c005"], "type": "simple"}
+{"id": "q011", "question": "出差住宿超标了怎么才能报销？", "goldenAnswer": "超标部分需提前经分管副总裁审批，否则不予报销。", "goldenChunkIds": ["hr-policy-2025#c005"], "type": "simple"}
+{"id": "q012", "question": "报销需要提供哪些材料？", "goldenAnswer": "增值税专用发票原件、费用明细清单、出差审批单复印件、支付凭证截图。", "goldenChunkIds": ["hr-policy-2025#c006"], "type": "simple"}
+{"id": "q013", "question": "报销材料不齐会怎么样？", "goldenAnswer": "材料不齐的，财务部门有权退回补正。", "goldenChunkIds": ["hr-policy-2025#c006"], "type": "simple"}
+{"id": "q014", "question": "报销申请应该在费用发生后多久内提交？", "goldenAnswer": "应在费用发生后三十日内提交，逾期原则上不予受理。", "goldenChunkIds": ["hr-policy-2025#c007"], "type": "simple"}
+{"id": "q015", "question": "报销逾期了还有补救办法吗？", "goldenAnswer": "特殊情况须书面说明原因并经财务总监批准。", "goldenChunkIds": ["hr-policy-2025#c007"], "type": "simple"}
+{"id": "q016", "question": "这份考勤与报销制度适用于哪些人？", "goldenAnswer": "适用于全体正式员工及实习生。", "goldenChunkIds": ["hr-policy-2025#c001"], "type": "simple"}
+{"id": "q017", "question": "弹性工作制下，上午几点前必须到岗？", "goldenAnswer": "核心工作时间上午十时起，即十点前应在岗。", "goldenChunkIds": ["hr-policy-2025#c002"], "type": "simple"}
+{"id": "q018", "question": "第九条规定的报销材料有哪些？", "goldenAnswer": "增值税专用发票原件、费用明细清单、出差审批单复印件、支付凭证截图。", "goldenChunkIds": ["hr-policy-2025#c006"], "type": "simple"}
+{"id": "q019", "question": "支付凭证截图是报销必需材料吗？", "goldenAnswer": "是，第九条报销材料清单中包含支付凭证截图。", "goldenChunkIds": ["hr-policy-2025#c006"], "type": "simple"}
+{"id": "q020", "question": "迟到是怎么规定的，和绩效怎么挂钩？", "goldenAnswer": "每月迟到超过三次的每次扣当月绩效分 2 分；迟到超过一小时按事假半天处理。", "goldenChunkIds": ["hr-policy-2025#c002"], "type": "multi-hop"}
+{"id": "q021", "question": "出差期间迟到扣绩效吗？", "goldenAnswer": "不扣。出差期间考勤以出差审批单为准，不计入迟到统计。", "goldenChunkIds": ["hr-policy-2025#c002", "hr-policy-2025#c004"], "type": "multi-hop"}
+{"id": "q022", "question": "住酒店花了 600 块能报吗？", "goldenAnswer": "一线城市标准 500 元/晚，超标 100 元部分需提前经分管副总裁审批，否则不予报销。", "goldenChunkIds": ["hr-policy-2025#c005"], "type": "multi-hop"}
+{"id": "q023", "question": "请病假和事假在材料和薪资处理上有什么区别？", "goldenAnswer": "病假需提供二级以上医院证明；事假按日扣除基本工资。两者都须提前在 OA 系统申请。", "goldenChunkIds": ["hr-policy-2025#c003"], "type": "multi-hop"}
+{"id": "q024", "question": "出差报销整套流程要注意哪些时间节点和审批？", "goldenAnswer": "出差前在 OA 登记去向与返岗时间；住宿超标需提前经分管副总裁审批；报销在费用发生后三十日内提交。", "goldenChunkIds": ["hr-policy-2025#c004", "hr-policy-2025#c005", "hr-policy-2025#c007"], "type": "multi-hop"}
+{"id": "q025", "question": "报销要准备什么材料，最晚什么时候提交？", "goldenAnswer": "准备发票原件、明细清单、审批单复印件、支付凭证截图；费用发生后三十日内提交。", "goldenChunkIds": ["hr-policy-2025#c006", "hr-policy-2025#c007"], "type": "multi-hop"}
+{"id": "q026", "question": "年假有几天？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}
+{"id": "q027", "question": "五险一金缴纳比例是多少？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}
+{"id": "q028", "question": "公司食堂几点开饭？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}
+{"id": "q029", "question": "年终奖怎么计算？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}
+{"id": "q030", "question": "试用期工资打几折？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}
+{"id": "q031", "question": "出差的机票和火车票报销标准是什么？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}
+{"id": "q032", "question": "离职手续怎么办？", "goldenAnswer": "知识库中未找到相关信息。", "goldenChunkIds": [], "type": "unanswerable"}

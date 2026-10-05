@@ -1,0 +1,19 @@
+# kb-assistant 的 ES（BM25 检索通道）。
+# pgvector 与 ollama 复用 ch06-doc-chunking 的 compose（vector-demo-pg / ollama 容器），
+# 若未启动请先在 ../ch06-doc-chunking 执行 docker compose up -d
+services:
+  elasticsearch:
+    build: ./es-ik
+    image: es-ik:8.13.2
+    container_name: kb-es
+    environment:
+      - discovery.type=single-node      # 单节点模式
+      - xpack.security.enabled=false    # 本地实验关掉鉴权，生产勿这么干
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m  # 限制堆内存，防止吃光内存
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+
+volumes:
+  es-data:

@@ -1,0 +1,45 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #f5f7fa; color: #333; }
+#app { min-height: 100vh; display: flex; flex-direction: column; }
+
+.nav { background: #2c3e50; color: #fff; padding: 12px 24px; display: flex; gap: 24px; align-items: center; }
+.nav .brand { font-weight: bold; font-size: 16px; }
+.nav a { color: #cfd8dc; text-decoration: none; font-size: 14px; }
+.nav a.router-link-active { color: #fff; font-weight: bold; }
+
+.page { flex: 1; max-width: 960px; width: 100%; margin: 0 auto; padding: 24px; }
+
+.chat-history { background: #fff; border-radius: 8px; padding: 16px; min-height: 320px;
+  max-height: 55vh; overflow-y: auto; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.msg { margin-bottom: 16px; }
+.msg .role { font-size: 12px; color: #888; margin-bottom: 4px; }
+.msg.user .bubble { background: #e3f2fd; }
+.msg.assistant .bubble { background: #f1f8e9; }
+.bubble { border-radius: 8px; padding: 10px 14px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+
+.cite { color: #1976d2; cursor: pointer; font-size: 12px; vertical-align: super; padding: 0 1px; }
+.cite:hover { text-decoration: underline; }
+.cite-broken { color: #999; }
+
+.input-row { display: flex; gap: 8px; }
+.input-row input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+.input-row button { padding: 12px 24px; border: none; border-radius: 8px; background: #1976d2;
+  color: #fff; cursor: pointer; font-size: 14px; }
+.input-row button:disabled { background: #90caf9; cursor: not-allowed; }
+
+.card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 12px; }
+
+.source-pop { position: fixed; right: 24px; bottom: 24px; width: 360px; background: #fff;
+  border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.18); padding: 16px; z-index: 10; }
+.source-pop h4 { margin-bottom: 8px; font-size: 14px; }
+.source-pop .meta { font-size: 12px; color: #888; margin-bottom: 8px; }
+.source-pop .snippet { font-size: 13px; line-height: 1.6; background: #fafafa; padding: 8px; border-radius: 4px; }
+.source-pop .close { float: right; cursor: pointer; color: #999; }
+
+table.docs { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+table.docs th, table.docs td { padding: 10px 14px; text-align: left; font-size: 13px; border-bottom: 1px solid #eee; }
+table.docs th { background: #fafafa; }
+.btn { padding: 4px 12px; border: 1px solid #ddd; border-radius: 4px; background: #fff;
+  cursor: pointer; font-size: 12px; margin-right: 6px; }
+.btn:hover { background: #f0f0f0; }
+.btn.danger { color: #c62828; border-color: #ef9a9a; }

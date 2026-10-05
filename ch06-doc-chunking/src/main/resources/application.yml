@@ -54,7 +54,8 @@ spring:
     openai:
       # 顶层配置 = 对话模型（DeepSeek）
       api-key: ${DEEPSEEK_API_KEY}
-      base-url: https://api.deepseek.com   # 注意：不带 /v1，starter 自动拼 /v1/chat/completions
+      # Spring AI 2.0 起底层换成官方 openai-java SDK，只补 /chat/completions，base-url 要带 /v1
+      base-url: https://api.deepseek.com/v1
       chat:
         options:
           model: deepseek-v4-flash   # 日常演示用 flash；复杂推理可换 deepseek-v4-pro
